@@ -8,7 +8,6 @@ class config {
 
     $this->title = $iniSettings['title'];
     $this->url = $iniSettings['url'];
-    $this->topDir = $iniSettings['topDir'];
 
   }
 
