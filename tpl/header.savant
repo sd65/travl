@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="img/favicon.ico?v=2" />
+
+	<title><?php echo $this->title ?></title>
+
+
+	<base href="/<?php echo $this->url ?>/">
+
+ 	<link href="css/bootstrap.min.css" rel="stylesheet"/>
+ 	<link href="css/style.css" rel="stylesheet"/>
+
+ 	<?php if ($this->method == "write"): ?>
+			<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+			<link href="css/froala_editor.min.css" rel="stylesheet" type="text/css"/>
+	<?php endif; ?>
+
+</head>
+
+<body class="container-fluid">

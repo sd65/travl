@@ -1,0 +1,56 @@
+<?php include "tpl/header.savant" ?>
+<?php include "tpl/sidebar.savant" ?>
+
+    <?php if(!empty($this->articles)) : ?>
+
+    	<?php foreach ($this->articles as $article):  ?>
+            
+            <article class="previewArticle row">
+
+                <a href="index.php/view/?people=<?php echo $article['people'] . "&id=" .$article['id'] ?>" title="">
+
+                    <div class="col-xs-6 picture" style="background-image: url('<?php echo $article['picture'] ?>');"></div>
+
+                    <div class="col-xs-6 text">
+
+                        <h2><?php echo $article['title'] ?></h2>
+
+                        <span><?php echo $article['meta'] ?></span>
+
+                        <div><?php echo $article['content'] ?></div>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+             <article class="fullArticle row">
+                    <div class="col-sm-12" style="text-align: center; margin-top: 2em;">
+                        <span class="glyphicon glyphicon-pushpin"></span> Tout vu !
+                    </div>
+            </article>
+
+        <?php endforeach; 
+    else:  ?>
+
+        <article class="fullArticle row">
+
+            <div class="col-sm-6 picture" style="background-image: url('<?php echo $this->randomImg ?>');"></div>
+
+            <div class="col-sm-offset-6 col-sm-6 text">
+
+                <h2>Rien à lire !</h2>
+
+                <span>(Pour le moment)</span>
+
+                <div>Personne ne vous a encore écrit, attendez encore un peu.</div>
+
+            </div>
+
+        </article>
+
+   <?php endif; ?>
+
+
+<?php include "tpl/footer.savant" ?>

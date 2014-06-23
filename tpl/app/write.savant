@@ -1,0 +1,50 @@
+<?php 
+include "tpl/header.savant" ;
+include "tpl/sidebar.savant" ;
+
+// Set in French
+setlocale (LC_TIME, 'fr_FR.utf8','fra');  
+?>
+	<article class="fullArticle row">
+
+		<button type="button" class="btn btn-default btn-md randomButton" data-toggle="tooltip" data-placement="bottom" title="Remplace l'image de l'article par une image aléatoire. Vous pouvez ajouter votre propre image à l'article en ajoutant une image dans le texte. La première image ajoutée dans le texte sera l'image de l'article."><span class="glyphicon glyphicon-picture"></span>
+ Image aléatoire</button>
+
+	 <button type="button" style="display: none" class="btn btn-default btn-md enlargePicture" ><span class="glyphicon glyphicon-fullscreen"></span>
+	 Voir l'image</button>
+
+        <div class="col-sm-6 picture" data-picture="<?php echo $this->randomImg ?>" style="background-image: url('<?php echo $this->randomImg ?>');">
+        </div>
+
+        <div class="col-sm-offset-6 col-sm-6 text">
+
+            <h2 id="title" class="editableInline">Nouvelles du <?php echo strftime("%d %b", time()) ?></h2>
+
+            <span id="meta" class="editableInline"><?php echo ucfirst(strftime("%A ", time())) . strftime("%d %b %Y à %R", time()) . " par " . ucfirst($this->people) ?></span>
+
+            <div id="content" class="editable"></div>
+
+            <div class="form-inline" role="form">
+
+ 				<div class="form-group">
+
+		            <select id="toPeople" class="form-control input-lg">
+			            <?php foreach ($this->peoples as $people) : ?>
+			            	<option <?php echo ($people == "commun") ? "selected" : null ?> value='<?php echo $people ?>'>Envoyer à <?php echo ucfirst($people) ?></option>;
+			            <?php endforeach; ?>
+					</select>
+
+					<span class="send">
+		            	<button class="form-control input-lg">Envoyer</button>
+		            </span>
+
+	            </div>
+	        </div>
+
+        </div>
+
+    </article>
+
+	<script type="text/javascript"> write = true; </script>
+
+<?php include "tpl/footer.savant" ?>
