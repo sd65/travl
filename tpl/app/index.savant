@@ -17,7 +17,7 @@
 
                         <span><?php echo $article['meta'] ?></span>
 
-                        <div><?php echo $article['content'] ?></div>
+                        <div><?php echo strip_tags($article['content']) ?></div>
 
                     </div>
 
