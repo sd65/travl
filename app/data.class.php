@@ -116,10 +116,13 @@ class Data
                 return true;
             }
         }
-        if (!file_exists("data/$people/password"))
+        if (file_exists("data/$people/"))
         {
-            $_SESSION['validUser'] = $people;
-            exit(header('Location: changePassword?people=' . $people));
+            if (!file_exists("data/$people/password"))
+            {
+                $_SESSION['validUser'] = $people;
+                exit(header('Location: changePassword?people=' . $people));
+            }
         }
         return false;
     }
