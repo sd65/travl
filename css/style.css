@@ -131,6 +131,8 @@ body {
     background: #252525;
     border-top: 1px solid #373737;
     border-bottom: 1px solid #1A1A1A;
+    height: 40px;
+    overflow: hidden;
 }
 
 .sidebar-nav li a:hover, .sidebar-nav li.active a {
