@@ -27,12 +27,12 @@
 
         <?php endforeach;  ?>
 
-        <article class="fullArticle row">
+        <article class="fullArticle row" style="height: 30%">
                 <div class="col-sm-12" style="text-align: center; margin-top: 2em;">
                     <span class="glyphicon glyphicon-pushpin"></span> Tout est lu !
                 </div>
         </article>
-        
+
     <?php else:  ?>
 
         <article class="fullArticle row">
