@@ -21,7 +21,8 @@ $(document).ready(function () {
             },
             replaceImageCallback: function (url) {
                 loadImage(url);
-            }
+            },
+            editorClass: "noSwipe",
         });
 
         function loadImage(url) {
@@ -89,7 +90,7 @@ $(document).ready(function () {
         swipeRight:function() {
             $("#sidebar-wrapper").addClass( "active" );
         },
-        excludedElements:"label, button, input, select, textarea",
+        excludedElements:"label, button, input, select, textarea, .noSwipe",
     });
 
     setTimeout(function(){
