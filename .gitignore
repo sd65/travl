@@ -1,3 +1,4 @@
-/data*
-!/data/common
-!/data/commun/.gitkeep
+data/*
+!data/commun
+data/commun/*
+!data/commun/.gitkeep
