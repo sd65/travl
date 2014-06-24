@@ -13,14 +13,14 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');
 	 <button type="button" style="display: none" class="btn btn-default btn-md enlargePicture" ><span class="glyphicon glyphicon-fullscreen"></span>
 	 Voir l'image</button>
 
-        <div class="col-sm-6 picture" data-picture="<?php echo $this->randomImg ?>" style="background-image: url('<?php echo $this->randomImg ?>');">
+        <div class="col-sm-6 picture" data-picture="<?php echo $randomImg ?>" style="background-image: url('<?php echo $randomImg ?>');">
         </div>
 
         <div class="col-sm-offset-6 col-sm-6 text">
 
             <h2 id="title" class="editableInline">Nouvelles du <?php echo strftime("%d %b", time()) ?></h2>
 
-            <span id="meta" class="editableInline"><?php echo ucfirst(strftime("%A ", time())) . strftime("%d %b %Y à %R", time()) . " par " . ucfirst($this->people) ?></span>
+            <span id="meta" class="editableInline"><?php echo ucfirst(strftime("%A ", time())) . strftime("%d %b %Y à %R", time()) . " par " . ucfirst($people) ?></span>
 
             <div id="content" class="editable"></div>
 
@@ -29,7 +29,7 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');
  				<div class="form-group">
 
 		            <select id="toPeople" class="form-control input-lg">
-			            <?php foreach ($this->peoples as $people) : ?>
+			            <?php foreach ($peoples as $people) : ?>
 			            	<option <?php echo ($people == "commun") ? "selected" : null ?> value='<?php echo $people ?>'>Envoyer à <?php echo ucfirst($people) ?></option>;
 			            <?php endforeach; ?>
 					</select>

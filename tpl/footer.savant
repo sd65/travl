@@ -4,13 +4,13 @@
         <script src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 
-		<?php if ($this->method == "write"): ?>
+		<?php if ($method == "write"): ?>
 			<script src="js/froala_editor.min.js"></script>
 			<script src="js/froala_editor.lang.fr.js"></script>
 		<?php endif; ?>
 
     </div>
-    
+
 </body>
 
 </html>

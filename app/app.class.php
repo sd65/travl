@@ -1,5 +1,5 @@
 <?php
-include "app/savant/Savant3.php";
+include "template.php";
 include "data.class.php";
 
 class app
@@ -17,13 +17,13 @@ class app
         $this->data = new Data($conf);
     }
 
-    function tplBasicConfig($funcName)
+    function tplBasicSet($funcName)
     {
-        $tpl = new Savant3();
-        $tpl->assign("method", $funcName);
-        $tpl->assign("class", __CLASS__);
-        $tpl->assign("url", $this->conf->url);
-        $tpl->assign("title", $this->conf->title);
+        $tpl = & new Template();
+        $tpl->set("method", $funcName);
+        $tpl->set("class", __CLASS__);
+        $tpl->set("url", $this->conf->url);
+        $tpl->set("title", $this->conf->title);
         return $tpl;
     }
 
@@ -38,31 +38,31 @@ class app
             $vars['people'] = "commun";
         }
 
-        if ($vars['people'] != "commun") 
+        if ($vars['people'] != "commun")
         {
             $flag = $this->data->checkAuth($vars['people']);
 
-            if (!$flag) 
+            if (!$flag)
             {
                 exit(header('Location: login?people=' . $vars['people']));
             }
         }
 
-        $tpl = $this->tplBasicConfig(__FUNCTION__);
-        $tpl->assign("articles", $this->data->getArticles($vars['people']));
-        $tpl->assign("randomImg", $this->data->getRandomImg());
-        $tpl->assign("peoples", $this->data->getPeople());
-        $tpl->assign("people", $vars['people']);
+        $tpl = $this->tplBasicSet(__FUNCTION__);
+        $tpl->set("articles", $this->data->getArticles($vars['people']));
+        $tpl->set("randomImg", $this->data->getRandomImg());
+        $tpl->set("peoples", $this->data->getPeople());
+        $tpl->set("people", $vars['people']);
 
         $tpl->display("tpl/app/index.savant");
     }
 
     function view($vars)
     {
-        $tpl = $this->tplBasicConfig(__FUNCTION__);
-        $tpl->assign("article", $this->data->getArticle($vars['people'], $vars['id']));
-        $tpl->assign("peoples", $this->data->getPeople());
-        $tpl->assign("people", $vars['people']);
+        $tpl = $this->tplBasicSet(__FUNCTION__);
+        $tpl->set("article", $this->data->getArticle($vars['people'], $vars['id']));
+        $tpl->set("peoples", $this->data->getPeople());
+        $tpl->set("people", $vars['people']);
 
         $tpl->display("tpl/app/view.savant");
     }
@@ -76,10 +76,10 @@ class app
         }
         else
         {
-            $tpl = $this->tplBasicConfig(__FUNCTION__);
-            $tpl->assign("randomImg", $this->data->getRandomImg());
-            $tpl->assign("peoples", $this->data->getPeople());
-            $tpl->assign("people", $vars['people']);
+            $tpl = $this->tplBasicSet(__FUNCTION__);
+            $tpl->set("randomImg", $this->data->getRandomImg());
+            $tpl->set("peoples", $this->data->getPeople());
+            $tpl->set("people", $vars['people']);
 
             $tpl->display("tpl/app/login.savant");
         }
@@ -100,13 +100,13 @@ class app
         }
         else
         {
-            $tpl = $this->tplBasicConfig(__FUNCTION__);
-            $tpl->assign("randomImg", $this->data->getRandomImg());
-            $tpl->assign("peoples", $this->data->getPeople());
-            $tpl->assign("people", $vars['people']);
+            $tpl = $this->tplBasicSet(__FUNCTION__);
+            $tpl->set("randomImg", $this->data->getRandomImg());
+            $tpl->set("peoples", $this->data->getPeople());
+            $tpl->set("people", $vars['people']);
 
             $flag = $this->data->checkAuth($vars['people']);
-            if (!$flag) 
+            if (!$flag)
             {
                 exit(header('Location: login?people=' . $vars['people']));
             }
@@ -117,16 +117,16 @@ class app
 
     function write($vars)
     {
-        $tpl = $this->tplBasicConfig(__FUNCTION__);
-        $tpl->assign("peoples", $this->data->getPeople());
+        $tpl = $this->tplBasicSet(__FUNCTION__);
+        $tpl->set("peoples", $this->data->getPeople());
 
-        if (!isset($_SESSION['validUser'])) 
+        if (!isset($_SESSION['validUser']))
         {
             exit(header('Location: login?people=' . $vars['people']));
         }
-        $tpl->assign("randomImg", $this->data->getRandomImg());
-        $tpl->assign("peoples", $this->data->getPeople());
-        $tpl->assign("people", $_SESSION['validUser']);
+        $tpl->set("randomImg", $this->data->getRandomImg());
+        $tpl->set("peoples", $this->data->getPeople());
+        $tpl->set("people", $_SESSION['validUser']);
 
         $tpl->display("tpl/app/write.savant");
     }
@@ -141,7 +141,7 @@ class app
 
     function getRandomImg($vars)
     {
-        echo $this->data->getRandomImg();    
+        echo $this->data->getRandomImg();
     }
 
     function listImages($vars)

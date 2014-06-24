@@ -30,7 +30,7 @@ class Data
 
             if ($extension === "article")
             {
-                array_push($articles, $this->parseArticle("data/$people/$filename"));                
+                array_push($articles, $this->parseArticle("data/$people/$filename"));
             }
         }
         return $articles;

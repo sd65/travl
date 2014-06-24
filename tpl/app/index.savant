@@ -1,10 +1,10 @@
 <?php include "tpl/header.savant" ?>
 <?php include "tpl/sidebar.savant" ?>
 
-    <?php if(!empty($this->articles)) : ?>
+    <?php if(!empty($articles)) : ?>
 
-    	<?php foreach ($this->articles as $article):  ?>
-            
+    	<?php foreach ($articles as $article):  ?>
+
             <article class="previewArticle row">
 
                 <a href="index.php/view/?people=<?php echo $article['people'] . "&id=" .$article['id'] ?>" title="">
@@ -37,7 +37,7 @@
 
         <article class="fullArticle row">
 
-            <div class="col-sm-6 picture" style="background-image: url('<?php echo $this->randomImg ?>');"></div>
+            <div class="col-sm-6 picture" style="background-image: url('<?php echo $randomImg ?>');"></div>
 
             <div class="col-sm-offset-6 col-sm-6 text">
 

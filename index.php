@@ -1,6 +1,6 @@
 <?php
 session_start();
-	
+
 // Config
 include "app/config.class.php";
 $conf = new config;

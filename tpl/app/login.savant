@@ -4,18 +4,18 @@
 
     <article class="fullArticle row">
 
-        <div class="col-sm-6 picture" style="background-image: url('<?php echo $this->randomImg ?>');"></div>
+        <div class="col-sm-6 picture" style="background-image: url('<?php echo $randomImg ?>');"></div>
 
         <div class="col-sm-offset-6 col-sm-6 text">
 
-            <h2 class="capitalize">Bienvenue <?php echo $this->people ?></h2>
+            <h2 class="capitalize">Bienvenue <?php echo $people ?></h2>
 
             <span>Veuillez vous connecter :</span>
 
             <div>
                 <form role="form" method="post" action="index.php/login">
                   <div class="form-group">
-                    <input type="hidden" name="people" value="<?php echo $this->people ?>"/>
+                    <input type="hidden" name="people" value="<?php echo $people ?>"/>
                     <input type="password" autocomplete="off" class="form-control" name="password" placeholder="Mot de passe"/>
                   </div>
                 </form>

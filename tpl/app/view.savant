@@ -5,15 +5,15 @@ include "tpl/sidebar.savant";
 
 	<article class="fullArticle row">
 
-        <div class="col-sm-6 picture" style="background-image: url('<?php echo $this->article['picture'] ?>');"></div>
+        <div class="col-sm-6 picture" style="background-image: url('<?php echo $article['picture'] ?>');"></div>
 
         <div class="col-sm-offset-6 col-sm-6 text">
 
-            <h2><?php echo $this->article['title'] ?></h2>
+            <h2><?php echo $article['title'] ?></h2>
 
-            <span><?php echo $this->article['meta'] ?></span>
+            <span><?php echo $article['meta'] ?></span>
 
-            <div><?php echo $this->article['content'] ?></div>
+            <div><?php echo $article['content'] ?></div>
 
         </div>
 
