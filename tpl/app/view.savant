@@ -1,7 +1,12 @@
-<?php 
-include "tpl/header.savant"; 
-include "tpl/sidebar.savant"; 
+<?php
+include "tpl/header.savant";
+include "tpl/sidebar.savant";
 ?>
+	<div id="topButtons">
+		<button type="button" style="display: none" class="btn btn-default btn-md enlargePicture" >
+			<span class="glyphicon glyphicon-fullscreen"></span> Voir l'image
+		</button>
+	</div>
 
 	<article class="fullArticle row">
 

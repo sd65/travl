@@ -175,7 +175,7 @@ body {
   position: absolute;
   bottom: 0px;
   margin-bottom: 0;
-} 
+}
 
 .logout .sidebar-nav {
   margin-bottom: 0;
@@ -183,20 +183,14 @@ body {
 
 .editable {
   margin-bottom: 40px;
-} 
-
-.randomButton {
-  position: absolute;
-  z-index: 200;
-  top: 1em;
-  left: 1em;
 }
 
-.enlargePicture {
+#topButtons {
   position: absolute;
-  z-index: 200;
   top: 1em;
-  left: 15em;
+  left: 3em;
+  width: 100%;
+  z-index: 200;
 }
 
 /* Override Editor */
@@ -205,20 +199,18 @@ body {
     height: 30px !important;
 }
 
-@media screen and (max-width:767px) { 
-  .randomButton {
-    left: 3.5em;
-  }
+@media screen and (max-width:767px) {
 
   .enlargePicture {
-    display: block !important;
+    display: inline !important;
   }
 
-  #title {
+  .text > h2 {
     margin-top: 1em;
   }
 
   .tooltip {
     display: none !important;
   }
+
 }

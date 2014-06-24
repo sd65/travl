@@ -56,7 +56,7 @@ $(document).ready(function () {
             });
         });
 
-        $(".randomButton").click(function (event) {
+        $(".randomButton").click(function () {
             $.ajax({
                 type: "GET",
                 url: "index.php/getRandomImg",
@@ -67,11 +67,12 @@ $(document).ready(function () {
             });
         });
 
-        $(".enlargePicture").click(function (event) {
-            $('.picture').toggleClass('background');
-        });
-
     }
+
+    $(".enlargePicture").click(function () {
+        $('.picture').toggleClass('background');
+        $('.text').toggle();
+    });
 
     $("#sidebar-wrapper").hover(
          function() {

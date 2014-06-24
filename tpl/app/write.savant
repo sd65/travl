@@ -7,11 +7,15 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');
 ?>
 	<article class="fullArticle row">
 
-		<button type="button" class="btn btn-default btn-md randomButton" data-toggle="tooltip" data-placement="bottom" title="Remplace l'image de l'article par une image aléatoire. Vous pouvez ajouter votre propre image à l'article en ajoutant une image dans le texte. La première image ajoutée dans le texte sera l'image de l'article."><span class="glyphicon glyphicon-picture"></span>
- Image aléatoire</button>
+		<div id="topButtons">
+			<button type="button" class="btn btn-default btn-md randomButton" data-toggle="tooltip" data-placement="bottom" title="Remplace l'image de l'article par une image aléatoire. Vous pouvez ajouter votre propre image à l'article en ajoutant une image dans le texte. La première image ajoutée dans le texte sera l'image de l'article.">
+				<span class="glyphicon glyphicon-picture"></span> Image aléatoire
+	 		</button>
 
-	 <button type="button" style="display: none" class="btn btn-default btn-md enlargePicture" ><span class="glyphicon glyphicon-fullscreen"></span>
-	 Voir l'image</button>
+			 <button type="button" style="display: none" class="btn btn-default btn-md enlargePicture" >
+			 	<span class="glyphicon glyphicon-fullscreen"></span>  Voir l'image
+			 </button>
+	 	</div>
 
         <div class="col-sm-6 picture" data-picture="<?php echo $randomImg ?>" style="background-image: url('<?php echo $randomImg ?>');">
         </div>
