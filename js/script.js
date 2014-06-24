@@ -88,6 +88,7 @@ $(document).ready(function () {
         swipeRight:function() {
             $("#sidebar-wrapper").addClass( "active" );
         },
+        excludedElements:"label, button, input, select, textarea",
     });
 
     setTimeout(function(){
