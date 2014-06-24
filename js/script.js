@@ -11,6 +11,7 @@ $(document).ready(function () {
             language: "fr",
             minHeight: 300,
             placeholder: "Votre texte",
+            allowedImageTypes: ["jpeg", "jpg", "png"],
             imageUploadURL: 'index.php/upload',
             imagesLoadURL: 'index.php/listImages',
             imageDeleteURL: 'index.php/deleteImage',

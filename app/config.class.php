@@ -6,8 +6,9 @@ class config {
 
     $iniSettings = parse_ini_file(realpath(dirname(__FILE__)) . "/../config/config.ini");
 
-    $this->title = $iniSettings['title'];
-    $this->url = $iniSettings['url'];
+    foreach ($iniSettings as $key => $value) {
+    	$this->$key = $value;
+    }
 
   }
 

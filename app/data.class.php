@@ -47,7 +47,7 @@ class Data
 
     function getArticle($people, $id)
     {
-        return $this->parseArticle("data/$people/$id" . '.article'); 
+        return $this->parseArticle("data/$people/$id" . '.article');
     }
 
     function parseArticle($path)
@@ -64,7 +64,7 @@ class Data
         {
             $line = fgets($file);
 
-            switch ($lineNumber) 
+            switch ($lineNumber)
             {
                 case 1:
                     $article['title'] = trim(substr($line, 2));
@@ -75,7 +75,7 @@ class Data
                 case 3:
                     $article['picture'] = trim(substr($line, 5));
                     break;
-                
+
                 default:
                     $article['content'] .= $line;
                     break;
@@ -101,13 +101,13 @@ class Data
             }
             else
             {
-                array_push($peoples, $filename);                
+                array_push($peoples, $filename);
             }
         }
         return array_merge(array('commun'), $peoples);
     }
 
-    function checkAuth($people) 
+    function checkAuth($people)
     {
         if(isset($_SESSION['validUser']))
         {
@@ -127,59 +127,68 @@ class Data
         return false;
     }
 
-    function login($people, $password) 
+    function login($people, $password)
     {
         $correctHash = file_get_contents("data/$people/password");
-        if (password_verify($password, $correctHash)) 
+        if (password_verify($password, $correctHash))
         {
             $_SESSION['validUser'] = $people;
         }
-        else 
+        else
         {
             session_unset();
         }
     }
 
-    function logout() 
+    function logout()
     {
         session_unset();
     }
 
-    function changePassword($people, $newPassword) 
+    function changePassword($people, $newPassword)
     {
         $newPasswordhash = password_hash($newPassword, PASSWORD_DEFAULT);
         file_put_contents("data/$people/password", $newPasswordhash);
     }
 
-    function uploadImage($file, $people) 
+    function uploadImage($file, $people)
     {
         // Allowed extentions.
-        $allowedExts = array("gif", "jpeg", "jpg", "png");
-
-        // Get filename.
-        $temp = explode(".", $file["name"]);
+        $allowedExts = array("jpeg", "jpg", "png");
 
         // Get extension.
-        $extension = end($temp);
+        $extension = end(explode(".", $file["name"]));
 
-        // An image check is being done in the editor but it is best to
-        // check that again on the server side.
-        if ((in_array($extension, $allowedExts)) && ($file["size"] < 10000000)) {
+        if ((in_array($extension, $allowedExts)) && ($file["size"] < $this->conf->maxUploadSize )) {
 
             // Generate new random name.
-            $name = sha1(microtime()) . "." . $extension;
+            $filename = "data/$people/" . sha1(microtime()) . ".jpg";
 
-            // Save file in the uploads folder.
-            move_uploaded_file($_FILES["file"]["tmp_name"], "data/$people/$name");
+            // Resize image
+            if( $extension == "png")
+            {
+                $image = imagecreatefrompng($_FILES["file"]["tmp_name"]);
+            }
+            else
+            {
+                $image = imagecreatefromjpeg($_FILES["file"]["tmp_name"]);
+            }
+
+            $width = 900;
+            $height = imagesy($image) * ($width / imagesx($image));
+
+            $newImage = imagecreatetruecolor($width, $height);
+            imagecopyresampled($newImage, $image, 0, 0, 0, 0, $width, $height, imagesx($image), imagesy($image));
+            imagejpeg($newImage, $filename, 75);
 
             // Generate response.
             $response = new StdClass;
-            $response->link = "data/$people/$name";
+            $response->link = $filename;
             echo stripslashes(json_encode($response));
         }
     }
 
-    function listImages($people) 
+    function listImages($people)
     {
         $filenames = scandir("data/$people" , 1);
         sort($filenames);
@@ -193,18 +202,18 @@ class Data
             $extension = end($temp);
             if (in_array($extension, $allowedExts))
             {
-                array_push($images, "data/$people/" . $filename);                
+                array_push($images, "data/$people/" . $filename);
             }
         }
         echo stripslashes(json_encode($images));
     }
 
-    function deleteImage($path) 
+    function deleteImage($path)
     {
         unlink($path);
     }
 
-    function submitWrite($toPeople, $title, $meta, $content, $picture) 
+    function submitWrite($toPeople, $title, $meta, $content, $picture)
     {
         $id = time();
         $content = "# $title \n## $meta \n### $picture\n$content";

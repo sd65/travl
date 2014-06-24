@@ -11,6 +11,10 @@ You can share articles, images with your family without login to your main email
 
 Just create a folder with the appropriate name in data/
 
+> Configuration
+
+Don't forget to edit "upload_max_filesize" in your php.ini and edit accordingly config/config.ini
+
 > About the author
 
 In a nutshell, visit my website : sylvaindoignon.fr
