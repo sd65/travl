@@ -1,9 +1,9 @@
-<?php 
+<?php
 include "tpl/header.savant" ;
 include "tpl/sidebar.savant" ;
 
 // Set in French
-setlocale (LC_TIME, 'fr_FR.utf8','fra');  
+setlocale (LC_TIME, 'fr_FR.utf8','fra');
 ?>
 	<article class="fullArticle row">
 
@@ -29,8 +29,8 @@ setlocale (LC_TIME, 'fr_FR.utf8','fra');
  				<div class="form-group">
 
 		            <select id="toPeople" class="form-control input-lg">
-			            <?php foreach ($peoples as $people) : ?>
-			            	<option <?php echo ($people == "commun") ? "selected" : null ?> value='<?php echo $people ?>'>Envoyer à <?php echo ucfirst($people) ?></option>;
+			            <?php foreach ($peoples as $Onepeople) : ?>
+			            	<option <?php echo ($Onepeople == "commun") ? "selected" : null ?> value='<?php echo $Onepeople ?>'>Envoyer à <?php echo ucfirst($Onepeople) ?></option>;
 			            <?php endforeach; ?>
 					</select>
 

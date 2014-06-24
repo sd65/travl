@@ -6,10 +6,10 @@
        		</a>
     	</div>
 		<ul class="sidebar-nav">
-			<?php foreach ($peoples as $people): ?>
-				<li <?php echo ($people == $people) ? "class='active'" : null ?>>
-					<a class="capitalize" href="index.php/?people=<?php echo $people ?>">
-						<span class="sub_icon glyphicon glyphicon-<?php echo ($people == "commun") ? "home" : "user" ?>"></span><?php echo $people ?>
+			<?php foreach ($peoples as $OnePeople): ?>
+				<li <?php echo ($people == $OnePeople) ? "class='active'" : null ?>>
+					<a class="capitalize" href="index.php/?people=<?php echo $OnePeople ?>">
+						<span class="sub_icon glyphicon glyphicon-<?php echo ($OnePeople == "commun") ? "home" : "user" ?>"></span><?php echo $OnePeople ?>
 					</a>
 				</li>
         	<?php endforeach;  ?>
