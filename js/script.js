@@ -35,7 +35,7 @@ $(document).ready(function () {
             buttons: [],
             placeholder: "Écrivez quelque chose",
         });
-    
+
 
         $(".send").click(function (event) {
             $.ajax({
@@ -52,7 +52,7 @@ $(document).ready(function () {
                 {
                     window.location = 'index.php/?people=' + people;
                 }
-            }); 
+            });
         });
 
         $(".randomButton").click(function (event) {
@@ -63,7 +63,7 @@ $(document).ready(function () {
                 {
                     $('.picture').removeAttr('style').attr('pictureSet', 'false').css('background-image', "url('" + url + "')");
                 }
-            }); 
+            });
         });
 
         $(".enlargePicture").click(function (event) {
@@ -80,17 +80,18 @@ $(document).ready(function () {
         }
     );
 
-    $(document).on( "swipeleft", function() {
-        $("#sidebar-wrapper").removeClass( "active" );
-    });
-
-    $(document).on( "swiperight", function() {
-        $("#sidebar-wrapper").addClass( "active" );
+    $(document).swipe( {
+        swipeLeft:function() {
+            $("#sidebar-wrapper").removeClass( "active" );
+        },
+        swipeRight:function() {
+            $("#sidebar-wrapper").addClass( "active" );
+        },
     });
 
     setTimeout(function(){
         $("#sidebar-wrapper").removeClass("active");
     },200);
 
-    
+
 });
